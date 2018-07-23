@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<div id="claimClinicData" class="table-responsive" style="padding-top: 25px">
+    <table class="table table-bordered table-striped table-condensed">
+        <thead>
+          <tr style="height: 50px; background-color: #efefef">
+            <th>Patient ID</th>
+            <!-- <th>Claim ID</th>  -->
+            <th>Age</th>
+            <th>Gender</th>  
+            <th>Service Code</th>
+            <th>Service Code Description</th>
+            <th>Revenue Code</th>  
+            <th>Revenue Code Description</th>             
+            <th>Diagnosis Code</th>
+            <th>Marital Status</th>
+              <th>Smoking</th>  
+              <th>Alcohol</th>
+              <th>Prescribed Drugs</th>
+              <th>Geography</th>
+              <th>Risk Score</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let claim of pagedItems"> 
+            <!-- <td>{{claim.ClaimID}}</td> -->
+            <td>{{claim.PatientID}}</td>   
+            <td style="text-align: right">{{claim.Age}}</td>
+            <td>{{claim.Gender}}</td> 
+            <td style="text-align: right">{{claim.ServiceCode}}</td>
+            <td>{{claim.Description}}</td> 
+            <td style="text-align: right">{{claim.RevenueCode}}</td>
+            <td>{{claim.RevenueDescription}}</td>          
+            <td>{{claim.DiagosisCode}}</td>
+            <td>{{claim.MaritalStatus}}</td>
+              <td>{{claim.Smoking}}</td> 
+              <td>{{claim.Alcohol}}</td>
+              <td>{{claim.PrescribedDrugs}}</td> 
+              <td>{{claim.Geography}}</td>               
+              <td style="text-align: right">{{claim.HCCCode}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <div class="col-lg-8 col-md-4">
+      <div style="display:inline-block;" class="pull-right">
+        <ul class="pagination" style="margin: 5px 0; display:none">
+          <li>
+            <a>First</a>
+          </li>
+          <li>
+            <a>Previous</a>
+          </li>
+          <li class="pg-number-control">
+            <a>
+              <select>
+                <option>1</option>
+              </select>
+            </a>
+          </li>
+          <li>
+            <a>Next</a>
+          </li>
+          <li>
+            <a>Last</a>
+          </li>
+        </ul>
+        <ul *ngIf="pager.pages && pager.pages.length" class="pagination" style="margin: 5px 0;">
+          <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(1)">First</a>
+          </li>
+          <li [ngClass]="{disabled:pager.currentPage === 1}">
+            <a (click)="setPage(pager.currentPage - 1)"><< Previous</a>
+          </li>
+          <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+            <a (click)="setPage(page)">{{page}}</a>
+          </li>
+          <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.currentPage + 1)">Next >></a>
+          </li>
+          <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+            <a (click)="setPage(pager.totalPages)">Last</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  <div style="text-align: right"> 
+      <button class="btn btn-info"> Export patient risk score to HL7
+        </button>
+      </div>

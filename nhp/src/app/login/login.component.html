@@ -1,0 +1,21 @@
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<div class="row">
+  <div class="col-md-6">
+    <form class="modal-content animate"  #f="ngForm">
+        <h1 style="text-align: center">NHP HEALTH CARE</h1>
+      <div class="container">          
+         <div>      
+          <label for="email"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" id="email" name="email" [(ngModel)]="email" required>
+          
+        </div>   
+      <div>
+        <label for="pwd"><b>Password</b></label>
+        <input type="password"  placeholder="Enter Password" id="pwd" name="passowrd" [(ngModel)]="password" required>        
+      </div>
+      <button type="submit"  [disabled]="f.invalid && f.touched" (click)="onLogin()" class="btn btn-primary">Login</button>
+    </div>
+    </form>
+  </div>
+</div>

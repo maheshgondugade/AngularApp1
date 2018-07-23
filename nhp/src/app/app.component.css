@@ -1,0 +1,21 @@
+.loader {
+    background: #fff;
+    opacity: 0.8;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+	width: 100%;
+	z-index: 9998;
+    text-align: center;
+    color: #333;
+}
+
+.loader i {
+	color: #0073c6;
+	position: fixed;
+	left: 49%;
+	top: 49%;
+	font-size: 30px;
+	animation: 700ms steps(50, end) 0s normal none infinite running fa-spin;
+}
