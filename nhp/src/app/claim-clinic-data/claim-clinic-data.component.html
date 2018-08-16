@@ -1,46 +1,59 @@
+<head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head> 
+    <nav class="navbar navbar-default">
+        <div style="float: right;">  
+            <ul class="nav navbar-nav">
+              <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
 
-
-<div id="claimClinicData" class="table-responsive" style="padding-top: 25px">
+<div id="claimClinicData" class="table-responsive" style="padding: 10px;height: 500px;">
     <table class="table table-bordered table-striped table-condensed">
         <thead>
           <tr style="height: 50px; background-color: #efefef">
-            <th>Patient ID</th>
+            <!-- <th>Patient ID</th> -->
             <!-- <th>Claim ID</th>  -->
-            <th>Age</th>
-            <th>Gender</th>  
-            <th>Service Code</th>
-            <th>Service Code Description</th>
-            <th>Revenue Code</th>  
-            <th>Revenue Code Description</th>             
-            <th>Diagnosis Code</th>
-            <th>Marital Status</th>
-              <th>Smoking</th>  
-              <th>Alcohol</th>
-              <th>Prescribed Drugs</th>
-              <th>Geography</th>
-              <th>Risk Score</th> 
+            <th style="width: 4%; text-align: center;">Age</th>
+            <th style="width: 7%; text-align: center;">Gender</th>  
+            <th style="width: 7%; text-align: center;">Service Code</th>
+            <!-- <th>Service Code Description</th> -->
+            <th style="width: 5%; text-align: center;">Revenue Code</th>  
+            <!-- <th>Revenue Code Description</th>              -->
+            <th style="width: 7%; text-align: center;">Diagnosis Code</th>
+            <!-- <th>Marital Status</th> -->
+              <th style="width: 5%; text-align: center;">Smoking</th>  
+              <th style="width: 5%; text-align: center;">Alcohol</th>
+              <th style="width: 7%; text-align: center;">Prescribed Drugs</th>
+              <th style="width: 7%; text-align: center;">Geography</th>
+              <th style="width: 5%; text-align: center;">Family History</th>
+              <th style="width: 5%; text-align: center;">Total No. of Readmission</th>
+              <th style="width: 5%; text-align: center;" [hidden]="calculatedRisk">Risk Score</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let claim of pagedItems"> 
             <!-- <td>{{claim.ClaimID}}</td> -->
-            <td>{{claim.PatientID}}</td>   
-            <td style="text-align: right">{{claim.Age}}</td>
-            <td>{{claim.Gender}}</td> 
-            <td style="text-align: right">{{claim.ServiceCode}}</td>
-            <td>{{claim.Description}}</td> 
-            <td style="text-align: right">{{claim.RevenueCode}}</td>
-            <td>{{claim.RevenueDescription}}</td>          
+            <!-- <td>{{claim.PatientID}}</td>    -->
+            <td style="text-align: center">{{claim.Age}}</td>
+            <td style="text-align: center">{{claim.Gender}}</td> 
+            <td style="text-align: center">{{claim.ServiceCode}}</td>
+            <!-- <td>{{claim.Description}}</td>  -->
+            <td style="text-align: center">{{claim.RevenueCode}}</td>
+            <!-- <td>{{claim.RevenueDescription}}</td>           -->
             <td>{{claim.DiagosisCode}}</td>
-            <td>{{claim.MaritalStatus}}</td>
-              <td>{{claim.Smoking}}</td> 
-              <td>{{claim.Alcohol}}</td>
+            <!-- <td>{{claim.MaritalStatus}}</td> -->
+              <td style="text-align: center">{{claim.Smoking}}</td> 
+              <td style="text-align: center">{{claim.Alcohol}}</td>
               <td>{{claim.PrescribedDrugs}}</td> 
               <td>{{claim.Geography}}</td>               
-              <td style="text-align: right">{{claim.HCCCode}}</td>
+              <td style="text-align: center">{{claim.FamilyHistory}}</td>
+              <td style="text-align: center">{{claim.TotalReadmission}}</td>
+              <td style="text-align: center" [hidden]="calculatedRisk">{{claim.HCCCode}}</td>
           </tr>
         </tbody>
       </table>
@@ -87,7 +100,9 @@
         </ul>
       </div>
     </div>
-  <div style="text-align: right"> 
-      <button class="btn btn-info"> Export patient risk score to HL7
-        </button>
-      </div>
+  <div style="float: right"> 
+      <button  *ngIf="calculatedRisk" class="btn btn-info" style="text-align: left" (click)="calculatRisk()"><i class="far fa-calculator"></i> Calculate Risk Score</button>      
+      <div *ngIf="calculatedRisk"><label style="font-weight:normal">Risk score is calculated as per HCC coding</label></div>
+      <button  *ngIf="!calculatedRisk" class="btn btn-info" style="text-align: right; float: right;"><i class="fa fa-download"></i> Export patient risk score to HL7</button>
+  </div>
+  

@@ -1,14 +1,43 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Filters;
+
+using System.Web.Mvc.Filters;
 
 namespace WebApplication1.Controllers
 {
-    public class ValuesController : ApiController
+
+  public class CustomAuthenticationAttribute : ActionFilterAttribute, System.Web.Mvc.Filters.IAuthenticationFilter
+  {
+    public CustomAuthenticationAttribute()
     {
+
+    }
+    public void OnAuthentication(AuthenticationContext filterContext)
+    {
+    }
+
+    public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
+    {
+    }
+  }
+
+
+  [CustomAuthenticationAttribute]
+  public class ValuesController : System.Web.Mvc.Controller
+  {
+
+        public ValuesController()
+        {
+
+        }
+        [ActionName("Test1")]        
         // GET api/values
         public IEnumerable<string> Get()
         {

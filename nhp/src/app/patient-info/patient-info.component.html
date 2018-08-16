@@ -3,11 +3,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
+  <nav class="navbar navbar-default">
+      <div class="pull-right">  
+          <ul class="nav navbar-nav">
+            <li><a href="#">Logout</a></li>
+          </ul>
+      </div>
+  </nav>
 <table>
     <tr>
-        <td class="alignment">
+        <td class="alignment-left">
             <div><button class="btn btn-info" (click)="LoadClaimData()" >Get Claim Data</button></div>
-            <div id="claimDataTable" class="table-responsive" style="padding-top: 5px">
+            <div id="claimDataTable" class="table-responsive" style="padding-top: 5px; height: 500px;">
                 <table class="table table-bordered table-striped table-condensed">
                     <thead>
                       <tr style="height: 50px; background-color: #efefef">
@@ -20,6 +27,8 @@
                         <th>Revenue Code</th>  
                         <th>Revenue Code Description</th>             
                         <th>Diagnosis Code</th>
+                        <!-- <th>Family History</th>
+                        <th>Total No. of Readmission</th> -->
                       </tr>
                     </thead>
                     <tbody>
@@ -32,7 +41,9 @@
                         <td>{{claim.Description}}</td> 
                         <td>{{claim.RevenueCode}}</td>
                         <td>{{claim.RevenueDescription}}</td>          
-                        <td>{{claim.DiagosisCode}}</td>               
+                        <td>{{claim.DiagosisCode}}</td> 
+                        <!-- <td>{{claim.FamilyHistory}}</td>
+                        <td style="text-align: center">{{claim.TotalReadmission}}</td>               -->
                       </tr>
                     </tbody>
                   </table>
@@ -80,9 +91,9 @@
                   </div>
                 </div>
         </td>
-        <td class="alignment" > 
+        <td class="alignment-right" > 
             <div><button class="btn btn-info" (click)="LoadClinicalData()">Get Clinical Data</button></div>
-            <div id="clinicDataTable" class="table-responsive" style="padding-top: 5px">
+            <div id="clinicDataTable" class="table-responsive" style="padding-top: 5px; height: 500px;">
                 <table class="table table-bordered table-striped table-condensed">
                     <thead>
                         <tr style="height: 50px; background-color: #efefef">
@@ -93,6 +104,8 @@
                         <th>Alcohol</th>
                         <th>Prescribed Drugs</th>
                         <th>Geography</th>  
+                        <th>Family History</th>
+                        <th>Total No. of Readmission</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -103,7 +116,9 @@
                         <td>{{c.Smoking}}</td> 
                         <td>{{c.Alcohol}}</td>
                         <td>{{c.PrescribedDrugs}}</td> 
-                        <td>{{c.Geography}}</td>              
+                        <td>{{c.Geography}}</td> 
+                        <td>{{c.FamilyHistory}}</td>
+                        <td style="text-align: center">{{c.TotalReadmission}}</td>             
                       </tr>
                     </tbody>
                   </table>
@@ -158,10 +173,7 @@
                 <div> 
                 <button class="btn btn-info" (click)="onNext()"> Combine Claims & Clinical Data >>
                   </button>
-                </div>  
-                <div> 
-                  <label> Note: On next step above data will be combined and risk score will be calculated</label>
-                </div>
+                </div>                  
             </div>
         </th>
      </tr>

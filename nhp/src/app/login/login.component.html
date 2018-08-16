@@ -1,20 +1,31 @@
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+ <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<nav class="navbar navbar-default btnRegister">
+    <div class="pull-right">  
+        <a href="#">Register</a>        
+    </div>
+</nav>
 <div class="row">
   <div class="col-md-6">
     <form class="modal-content animate"  #f="ngForm">
         <h1 style="text-align: center">NHP HEALTH CARE</h1>
       <div class="container">          
          <div>      
-          <label for="email"><b>Username</b></label>
+          <label for="email"><i class="fa fa-user icon"></i><b>Username</b></label>
           <input type="text" placeholder="Enter Username" id="email" name="email" [(ngModel)]="email" required>
           
         </div>   
       <div>
-        <label for="pwd"><b>Password</b></label>
-        <input type="password"  placeholder="Enter Password" id="pwd" name="passowrd" [(ngModel)]="password" required>        
+        <label for="pwd"><i class="fa fa-key icon"></i><b>Password</b></label>
+          <input type="password"  placeholder="Enter Password" id="pwd" name="passowrd" [(ngModel)]="password" required>                
       </div>
       <button type="submit"  [disabled]="f.invalid && f.touched" (click)="onLogin()" class="btn btn-primary">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+      <span class="psw">Forgot <a href="#">Password?</a></span>
     </div>
     </form>
   </div>

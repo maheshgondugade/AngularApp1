@@ -7,7 +7,8 @@ import "rxjs/Rx";
 //const ROOT_URL:string = "http://localhost:52770/api/Patient";
 const ROOT_URL:string = "http://10.11.13.115:8080/api/Patient";
 
-@Injectable({
+@Injectable
+({
   providedIn: 'root'
 })
 export class PatientService {

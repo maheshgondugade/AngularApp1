@@ -10,6 +10,8 @@ import {  HttpClientModule} from '@angular/common/http';
 import { ClaimClinicDataComponent } from './claim-clinic-data/claim-clinic-data.component';
 import { ApproutingModule } from './app-routing.module';
 import { PagerServiceService } from './services/pager-service.service';
+import { PatientService } from './patient.service';
+
 
 @NgModule({
   declarations: [
@@ -23,9 +25,9 @@ import { PagerServiceService } from './services/pager-service.service';
     FormsModule,
     ApproutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule    
   ],
-  providers: [PagerServiceService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

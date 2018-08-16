@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,6 +9,7 @@ using WebApplication1.Service;
 
 namespace WebApplication1.Controllers
 {
+  //[Authorize]
     public class PatientController : ApiController
     {
         PatientService _patientService = null;

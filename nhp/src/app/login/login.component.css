@@ -121,3 +121,25 @@ span.psw {
 .btn.btn-primary[disabled] {
     background-color:#dc2121;
 }
+
+.input-container {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.icon {    
+    color: dodgerblue;    
+}
+.input-field {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+* {box-sizing: border-box;}
+.btnRegister{
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+	border-radius: 4px;
+	border: 1px solid transparent;
+}

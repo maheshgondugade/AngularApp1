@@ -9,6 +9,7 @@ import {PagerServiceService} from '../services/pager-service.service'
 })
 export class ClaimClinicDataComponent implements OnInit {
 private claimClinicData:any;
+private calculatedRisk:boolean  = true;
 
  // array of all items to be paged
  private allItems: any;
@@ -24,6 +25,7 @@ private claimClinicData:any;
   }
 
   ngOnInit() {
+
     this._patientService.getPatientData().subscribe((tempdate) => {
       this.claimClinicData = tempdate;
       this.allItems = tempdate;
@@ -31,6 +33,8 @@ private claimClinicData:any;
     }, err => {
       console.log(err);
     });
+
+    this.calculatedRisk = true;
 
   }
 
@@ -40,6 +44,9 @@ private claimClinicData:any;
 
     // get current page of items
     this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+}
+calculatRisk(){
+  this.calculatedRisk=false;
 }
 
 }

@@ -1,17 +1,14 @@
-.split {
-    height: 80%;
-    width: 50%;
-    position: fixed;
-    
-    top: 0;
-    /* overflow-x: hidden; */
-    padding-top: 20px;
-    padding-left: 5px;
-}
 
-.alignment {
+.alignment-left {
     padding-left: 5px; 
-    width: 40%;
+    width: 50%;
+    padding-top: 5px; 
+    vertical-align: top;
+}
+.alignment-right {
+    padding-left: 5px; 
+    padding-right: 5px;
+    width: 30%;
     padding-top: 5px; 
     vertical-align: top;
 }

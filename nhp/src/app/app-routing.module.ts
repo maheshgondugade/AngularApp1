@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 import { LoginComponent } from './login/login.component'
 import { PatientInfoComponent } from './patient-info/patient-info.component'
 import { ClaimClinicDataComponent } from './claim-clinic-data/claim-clinic-data.component'
+import {AuthGuard} from './gurad/auth.guard';
 
 
 
@@ -13,7 +14,7 @@ const routes: Routes = [
     },
     { 
         path: 'patientinfo', 
-        component: PatientInfoComponent 
+        component: PatientInfoComponent,canActivate:[AuthGuard]
     },
     { 
         path: 'claimclinic',
