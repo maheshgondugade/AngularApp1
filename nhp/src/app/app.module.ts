@@ -11,6 +11,9 @@ import { ClaimClinicDataComponent } from './claim-clinic-data/claim-clinic-data.
 import { ApproutingModule } from './app-routing.module';
 import { PagerServiceService } from './services/pager-service.service';
 import { PatientService } from './patient.service';
+import { AgGridModule } from "ag-grid-angular/main";
+import { AngularGridComponent } from './angular-grid/angular-grid.component';
+
 
 
 @NgModule({
@@ -18,14 +21,16 @@ import { PatientService } from './patient.service';
     AppComponent,
     LoginComponent,
     PatientInfoComponent,
-    ClaimClinicDataComponent
+    ClaimClinicDataComponent,
+    AngularGridComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ApproutingModule,
     ReactiveFormsModule,
-    HttpClientModule    
+    HttpClientModule,
+    AgGridModule.withComponents([])    
   ],
   providers: [],
   bootstrap: [AppComponent]
