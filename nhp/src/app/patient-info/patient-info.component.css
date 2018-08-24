@@ -1,14 +1,14 @@
 
 .alignment-left {
     padding-left: 5px; 
-    width: 50%;
+    width: 850px;
     padding-top: 5px; 
     vertical-align: top;
 }
 .alignment-right {
     padding-left: 5px; 
     padding-right: 5px;
-    width: 30%;
+    width: 800px;
     padding-top: 5px; 
     vertical-align: top;
 }

@@ -4,7 +4,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head> 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-bottom">
+        <div><a href="#" class="pull-left"><img src="assets/NHPlogo.png"></a></div>  
         <div style="float: right;">  
             <ul class="nav navbar-nav">
               <li><a href="#">Logout</a></li>
@@ -13,50 +14,7 @@
     </nav>
 
 <div id="claimClinicData" class="table-responsive" style="padding: 10px;height: 500px;">
-    <table class="table table-bordered table-striped table-condensed">
-        <thead>
-          <tr style="height: 50px; background-color: #efefef">
-            <!-- <th>Patient ID</th> -->
-            <!-- <th>Claim ID</th>  -->
-            <th style="width: 4%; text-align: center;">Age</th>
-            <th style="width: 7%; text-align: center;">Gender</th>  
-            <th style="width: 7%; text-align: center;">Service Code</th>
-            <!-- <th>Service Code Description</th> -->
-            <th style="width: 5%; text-align: center;">Revenue Code</th>  
-            <!-- <th>Revenue Code Description</th>              -->
-            <th style="width: 7%; text-align: center;">Diagnosis Code</th>
-            <!-- <th>Marital Status</th> -->
-              <th style="width: 5%; text-align: center;">Smoking</th>  
-              <th style="width: 5%; text-align: center;">Alcohol</th>
-              <th style="width: 7%; text-align: center;">Prescribed Drugs</th>
-              <th style="width: 7%; text-align: center;">Geography</th>
-              <th style="width: 5%; text-align: center;">Family History</th>
-              <th style="width: 5%; text-align: center;">Total No. of Readmission</th>
-              <th style="width: 5%; text-align: center;" [hidden]="calculatedRisk">Risk Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let claim of pagedItems"> 
-            <!-- <td>{{claim.ClaimID}}</td> -->
-            <!-- <td>{{claim.PatientID}}</td>    -->
-            <td style="text-align: center">{{claim.Age}}</td>
-            <td style="text-align: center">{{claim.Gender}}</td> 
-            <td style="text-align: center">{{claim.ServiceCode}}</td>
-            <!-- <td>{{claim.Description}}</td>  -->
-            <td style="text-align: center">{{claim.RevenueCode}}</td>
-            <!-- <td>{{claim.RevenueDescription}}</td>           -->
-            <td>{{claim.DiagosisCode}}</td>
-            <!-- <td>{{claim.MaritalStatus}}</td> -->
-              <td style="text-align: center">{{claim.Smoking}}</td> 
-              <td style="text-align: center">{{claim.Alcohol}}</td>
-              <td>{{claim.PrescribedDrugs}}</td> 
-              <td>{{claim.Geography}}</td>               
-              <td style="text-align: center">{{claim.FamilyHistory}}</td>
-              <td style="text-align: center">{{claim.TotalReadmission}}</td>
-              <td style="text-align: center" [hidden]="calculatedRisk">{{claim.HCCCode}}</td>
-          </tr>
-        </tbody>
-      </table>
+    <angular-clinicClaimGrid></angular-clinicClaimGrid>
   </div>
   <div class="col-lg-8 col-md-4">
       <div style="display:inline-block;" class="pull-right">

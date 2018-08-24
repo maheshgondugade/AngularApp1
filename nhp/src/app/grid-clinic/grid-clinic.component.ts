@@ -1,12 +1,12 @@
-import { Component, ViewChild , OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { PatientService } from "../patient.service"
 
 @Component({
-  selector: "angular-ClaimDatagrid",
+  selector: "angular-ClinicDataGrid",
   template: `<ag-grid-angular
     #agGrid
     style="width: 100%; height: 100%;"
-    id="myGrid"
+    id="clinicGrid"
     [rowData]="rowData"
     class="ag-theme-balham"
     [columnDefs]="columnDefs"
@@ -18,14 +18,14 @@ import { PatientService } from "../patient.service"
     ></ag-grid-angular>
 `
 })
-export class AngularGridComponent implements OnInit {
+export class GridClinicComponent implements OnInit {
   private gridApi;
   private gridColumnApi;
   private rowData: any = [];
 
   private columnDefs;
+ 
   ngOnInit() {
-   
   }
 
   constructor(private _patientService: PatientService) {
@@ -36,42 +36,44 @@ export class AngularGridComponent implements OnInit {
         width: 150
       },
       {
-        headerName: "Age",
-        field: "Age",
-        width: 90,
-        filter: "agNumberColumnFilter"
+        headerName: "Marital Status",
+        field: "MaritalStatus",
+        width: 90
+        //, filter: "agNumberColumnFilter"
       },
       {
-        headerName: "Gender",
-        field: "Gender",
+        headerName: "Smoking",
+        field: "Smoking",
         width: 120
       },
       {
-        headerName: "Service Code",
-        field: "ServiceCode",
+        headerName: "Alcohol",
+        field: "Alcohol",
         width: 90
       },      
       {
-        headerName: "Service Code Description",
-        field: "Description",
+        headerName: "Prescribed Drugs",
+        field: "PrescribedDrugs",
         width: 110
       },      
       {
-        headerName: "Revenue Code",
-        field: "RevenueCode",
+        headerName: "Geography",
+        field: "Geography",
         width: 100,
         //filter: "agNumberColumnFilter",
         //suppressFilter: true
       },
       {
-        headerName: "Revenue Code Description",
-        field: "RevenueDescription",
+        headerName: "Family History",
+        field: "FamilyHistory",
         width: 110
+        
       },
       {
-        headerName: "Diagnosis Code",
-        field: "DiagosisCode",
-        width: 110
+        headerName: "Total No. of Readmission",
+        field: "TotalReadmission",
+        width: 110,
+        cellStyle: {'text-align': 'center'}
       }
     ];
   }
@@ -79,21 +81,12 @@ export class AngularGridComponent implements OnInit {
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-
-    // this.http
-    //   .get("https://raw.githubusercontent.com/ag-grid/ag-grid-docs/master/src/olympicWinners.json")
-    //   .subscribe((data) => {
-    //     this.rowData = data;
-    //   });
   }
-  LoadClaimData(){
-
-    this._patientService.getClaimData().subscribe((tempdate) => {
-      this.rowData = tempdate;      
+  LoadClinicData(){
+    this._patientService.getClinicData().subscribe((t) => {
+      this.rowData = t;      
     }, err => {
       console.log(err);
     });
   }
-
-
 }

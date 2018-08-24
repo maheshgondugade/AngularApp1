@@ -13,6 +13,8 @@ import { PagerServiceService } from './services/pager-service.service';
 import { PatientService } from './patient.service';
 import { AgGridModule } from "ag-grid-angular/main";
 import { AngularGridComponent } from './angular-grid/angular-grid.component';
+import { GridClinicComponent } from './grid-clinic/grid-clinic.component';
+import { GridClinicClaimComponent } from './grid-clinic-claim/grid-clinic-claim.component';
 
 
 
@@ -22,7 +24,9 @@ import { AngularGridComponent } from './angular-grid/angular-grid.component';
     LoginComponent,
     PatientInfoComponent,
     ClaimClinicDataComponent,
-    AngularGridComponent
+    AngularGridComponent,
+    GridClinicComponent,
+    GridClinicClaimComponent
   ],
   imports: [
     BrowserModule,

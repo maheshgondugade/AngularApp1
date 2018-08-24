@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { PatientService } from '../patient.service';
-import {PagerServiceService} from '../services/pager-service.service'
+import { Component, OnInit, ViewChild } from '@angular/core';
+//import { PatientService } from '../patient.service';
+import {  PagerServiceService } from '../services/pager-service.service'
+import {  GridClinicClaimComponent  } from '../grid-clinic-claim/grid-clinic-claim.component'
+
 
 @Component({
   selector: 'app-claim-clinic-data',
@@ -8,6 +10,9 @@ import {PagerServiceService} from '../services/pager-service.service'
   styleUrls: ['./claim-clinic-data.component.css']
 })
 export class ClaimClinicDataComponent implements OnInit {
+
+@ViewChild(GridClinicClaimComponent) _grid : GridClinicClaimComponent;
+
 private claimClinicData:any;
 private calculatedRisk:boolean  = true;
 
@@ -20,19 +25,20 @@ private calculatedRisk:boolean  = true;
  // paged items
  pagedItems: any[];
 
-  constructor(private _patientService: PatientService, private pagerService : PagerServiceService ) { 
+  constructor(private pagerService : PagerServiceService ) { 
 
   }
 
   ngOnInit() {
 
-    this._patientService.getPatientData().subscribe((tempdate) => {
-      this.claimClinicData = tempdate;
-      this.allItems = tempdate;
-      this.setPage(1);
-    }, err => {
-      console.log(err);
-    });
+    this._grid.LoadData();    
+    // this._patientService.getPatientData().subscribe((tempdate) => {
+    //   this.claimClinicData = tempdate;
+    //   this.allItems = tempdate;
+    //   this.setPage(1);
+    // }, err => {
+    //   console.log(err);
+    // });
 
     this.calculatedRisk = true;
 
@@ -46,6 +52,7 @@ private calculatedRisk:boolean  = true;
     this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
 }
 calculatRisk(){
+  this._grid.showRiskScore(true);
   this.calculatedRisk=false;
 }
 
